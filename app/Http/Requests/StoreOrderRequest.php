@@ -24,7 +24,9 @@ class StoreOrderRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'product_id'=>'required|exists:products,id',
+            'card_id'=>'required|exists:cards,id',
+            'quantity_product'=>'required|integer',
         ];
     }
 }

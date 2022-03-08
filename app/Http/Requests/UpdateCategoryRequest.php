@@ -25,6 +25,7 @@ class UpdateCategoryRequest extends FormRequest
     {
         return [
             'cat_name' =>'required|unique:categories|max:40',
+            'cat_img'=>'required|image|mimes:jpeg,png,jpg|max:2048',
         ];
     }
 }

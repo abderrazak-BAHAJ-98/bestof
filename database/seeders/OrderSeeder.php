@@ -14,6 +14,7 @@ class OrderSeeder extends Seeder
      */
     public function run()
     {
+        //Factory to Generate 5 Orders
         Order::factory(5)->create();
     }
 }

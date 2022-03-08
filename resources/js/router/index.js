@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-
+import NotFound from '../views/NotFound.vue'
 
 Vue.use(VueRouter);
 
@@ -56,14 +56,18 @@ const routes = [
         component: () =>import("../views/ProductList.vue"),
     },
     {
-		path: '/bag',
-        name:'bag',
-        component: () =>import("../views/Bag.vue"),
+		path: '/cart',
+        name:'Cart',
+        component: () =>import("../views/Cart.vue"),
     },
     {
 		path: '/category/:id',
         name:'Category',
         component: () =>import("../views/ShopeCategory.vue"),
+    },
+    {
+		path: "*",
+        component:NotFound,
     },
 ];
 

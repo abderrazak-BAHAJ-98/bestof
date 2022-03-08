@@ -4,9 +4,8 @@
     style="background-color: transparent"
   >
     <div class="container">
-      <a class="navbar-brand text-success logo h2 align-self-center "
-        >Shope App</a
-      >
+      <router-link to="/" class="navbar-brand text-success logo h2 align-self-cente" aria-current="page"
+      >Shope Store</router-link>
       <button
         class="navbar-toggler"
         type="button"
@@ -27,9 +26,6 @@
           </li>
           <li class="nav-item">
             <router-link to="/shope" class="nav-link fs-5">Shope</router-link>
-          </li>
-           <li class="nav-item">
-            <router-link to="/maintenance" class="nav-link fs-5">Maintenance</router-link>
           </li>
           <li class="nav-item">
             <router-link to="/about" class="nav-link fs-5">About</router-link>

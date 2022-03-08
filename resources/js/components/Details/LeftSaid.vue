@@ -73,4 +73,11 @@ export default {
     outline: none;
     border: none;
 }
+button .card-img{
+    max-height: 9em;
+    width: 100%;
+}
+button{
+    width: 100%;
+}
 </style>

@@ -18,7 +18,7 @@ class OrderFactory extends Factory
             'user_id'=> $this->faker->numberBetween(1,5),
             'quantity_product'=> $this->faker->numberBetween(1,17),
             'card_id'=> $this->faker->numberBetween(1,5),
-            'price_sall'=> $this->faker->randomFloat(null,40,4000),
+            'price_sale'=> $this->faker->randomFloat(null,40,4000),
         ];
     }
 }

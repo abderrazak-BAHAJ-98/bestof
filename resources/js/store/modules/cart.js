@@ -1,4 +1,4 @@
-const category = {
+const cart = {
     state:{
         carts:[]
     },
@@ -7,48 +7,58 @@ const category = {
         getAllCarts:state=>state.carts
     },
     mutations:{
-        setCarts(state,carts){
-            state.carts = carts.data;
-        },
-        addCarts(state,carts){
-            state.carts.push(carts.data)
-        },
-        destroyCarts(state,id){
-            let index = state.carts.indexOf(e => e.id == id)
-            console.log(index)
-            state.carts.slice(index,1)
-        }
+        SET_CARTS(state,carts){state.carts = carts.data;},
+        ADD_CART(state,cart){state.carts.push(cart.data)},
+        UPDATE_CART(state,cart){state.carts[state.carts.indexOf(e => e.id == cart.data.id)] = cart.data},
+        DESTROY_CART(state,id){state.carts.slice(state.carts.indexOf(e => e.id == id),1)}
     },
     actions:{
+        // Get All Carts 
         async getCartsUser(context){
             if(this.getters['userToken']){
                 await axios.get(`/api/cart`,{headers:{
                 'Authorization':`Bearer ${this.getters['userToken']}`
-                 }}).then(res =>{
-                context.commit('setCarts',res.data)
+                 }}).then(res =>{  
+                context.commit('SET_CARTS',res.data)
                 }).catch(err=>{
-                context.dispatch('showError',err.response.statusText)
+                    context.dispatch('showError',err.response.statusText)
                 })
             }
             else
             context.dispatch('showError','Login first')
         },
+        // Create Cart 
+        // TYPE DATA {product_id : number,quantity : number}
         async addCartForUser(context,data){
             let userToken = this.getters['userToken']
             await axios.post(`/api/cart`,data,{headers:{
                 'Authorization':`Bearer ${userToken}`
                  }}).then(res =>{
-                context.commit('addCarts',res.data)
+                context.commit('ADD_CART',res.data)
                 }).catch(err=>{
                 context.dispatch('showError',err.response.statusText)
                 })
         },
+        // Update Cart
+        // id Type number
+        async UpdateCartForUser(context,id){
+            let userToken = this.getters['userToken']
+            await axios.delete(`/api/cart/${id}`,{},{headers:{
+                'Authorization':`Bearer ${userToken}`
+                 }}).then(res =>{
+                context.commit('UPDATE_CART',res.data)
+                }).catch(err=>{
+                context.dispatch('showError',err.response.statusText)
+                })
+        },
+        // Delete Carte
+        // id Type number
         async destroyCartForUser(context,id){
             let userToken = this.getters['userToken']
             await axios.delete(`/api/cart/${id}`,{},{headers:{
                 'Authorization':`Bearer ${userToken}`
                  }}).then(res =>{
-                context.commit('destroyCarts',id)
+                context.commit('DESTROY_CART',id)
                 }).catch(err=>{
                 context.dispatch('showError',err.response.statusText)
                 })
@@ -58,4 +68,4 @@ const category = {
     
 }
 
-export default category;
+export default cart;

@@ -14,6 +14,13 @@ class RateResource extends JsonResource
      */
     public function toArray($request)
     {
+        if(isset($this->count_point)){
+            return [
+                'product_id'=>(string)$this->product_id,
+                'count_point'=>(string)$this->count_point,
+                'total_point'=>(string)$this->total_point,
+            ];
+        }
         return [
             'id'=>(string)$this->id,
             'product_id'=>(string)$this->product_id,

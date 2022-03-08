@@ -12,7 +12,11 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-  
+    /**
+     * Method Register Account 
+     * 
+     * @return array
+     */
     public function Register(StoreUserRequest $req )
     {
         $newUser = User::create([
@@ -26,6 +30,13 @@ class UserController extends Controller
         ]);
         return response(['message'=>'User have been Register Success']);
     }
+
+    /**
+     * Method Login User And Create Tokens 
+     *
+     * @return array
+     */
+
 
     public function Login(Request $req)
     {

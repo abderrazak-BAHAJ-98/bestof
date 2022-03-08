@@ -51,5 +51,7 @@ export default {
 </script>
 
 <style>
-
+.card-img-top{
+    max-height: 20em;
+}
 </style>

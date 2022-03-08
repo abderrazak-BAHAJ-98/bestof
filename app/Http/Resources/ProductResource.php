@@ -17,6 +17,7 @@ class ProductResource extends JsonResource
             return [
                 'id'=>(string)$this->id,
                 'category_id'=>(string)$this->category_id,
+                'user_id'=>(string)$this->user_id,
                 'p_name'=>$this->p_name,
                 'p_slug'=>$this->p_slug,
                 'p_description'=>$this->p_description,
@@ -32,6 +33,7 @@ class ProductResource extends JsonResource
         return [
                 'id'=>(string)$this->id,
                 'category_id'=>(string)$this->category_id,
+                'user_id'=>(string)$this->user_id,
                 'p_name'=>$this->p_name,
                 'p_slug'=>$this->p_slug,
                 'p_description'=>$this->p_description,

@@ -26,6 +26,7 @@ class ProductFactory extends Factory
             'p_color' => $this->faker->colorName(),
             'p_price' => $price,
             'category_id' => $this->faker->numberBetween(1,5),
+            'user_id' => $this->faker->numberBetween(1,5),
         ];
     }
 }

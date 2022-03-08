@@ -2,57 +2,55 @@ const rate = {
     state:{
         rates:[]
     },
-    getters:{/*
-        findCarts : state => id =>state.carts.find(c => c.id == id),
-        getAllCarts:state=>state.carts*/
+    getters:{
+        findRate : state => id =>state.rates.find(r => r.id == id),
+        getAllRates:state=>state.rates
     },
-    mutations:{/*
-        setCarts(state,carts){
-            state.carts = carts.data;
+    mutations:{
+        SET_RATES(state,rates){
+            state.rates = rates.data.map(r => {
+            let total= Number.parseInt(r.total_point) /Number.parseFloat(r.count_point)
+            return {point_rate :total.toFixed(1),product_id:r.product_id}
+        })},
+        ADD_RATE(state,rate){
+            let el = state.rates.indexOf(e => e.product_id == rate.data.product_id)
+            state.rates[el].count_point++
+            state.rates[el].total_point += rate.data.rate_Point
         },
-        addCarts(state,carts){
-            state.carts.push(carts.data)
-        },
-        destroyCarts(state,id){
-            let index = state.carts.indexOf(e => e.id == id)
-            console.log(index)
-            state.carts.slice(index,1)
-        }*/
     },
-    actions:{/*
-        async getCartsUser(context){
-            if(this.getters['userToken']){
-                await axios.get(`/api/cart`,{headers:{
-                'Authorization':`Bearer ${this.getters['userToken']}`
-                 }}).then(res =>{
-                context.commit('setCarts',res.data)
-                }).catch(err=>{
+    actions:{
+        // Get All rates 
+        async getRates(context){
+            await axios.get(`/api/rate`).then(res =>{  
+                context.commit('SET_RATES',res.data)
+            }).catch(err=>{
                 context.dispatch('showError',err.response.statusText)
-                })
-            }
-            else
-            context.dispatch('showError','Login first')
+            })
         },
-        async addCartForUser(context,data){
+        // Create rate 
+        // TYPE DATA {product_id : INTEGER ,rate_Point : INTEGER}
+        async addRate(context,data){
             let userToken = this.getters['userToken']
-            await axios.post(`/api/cart`,data,{headers:{
+            await axios.post(`/api/rate`,data,{headers:{
                 'Authorization':`Bearer ${userToken}`
                  }}).then(res =>{
-                context.commit('addCarts',res.data)
+                context.commit('ADD_RATE',res.data)
                 }).catch(err=>{
                 context.dispatch('showError',err.response.statusText)
                 })
         },
-        async destroyCartForUser(context,id){
+        // Delete rate
+        // id Type INTEGER
+        async destroyRate(context,id){
             let userToken = this.getters['userToken']
-            await axios.delete(`/api/cart/${id}`,{},{headers:{
+            await axios.delete(`/api/rate/${id}`,{},{headers:{
                 'Authorization':`Bearer ${userToken}`
                  }}).then(res =>{
-                context.commit('destroyCarts',id)
+                     console.log('delete')
                 }).catch(err=>{
                 context.dispatch('showError',err.response.statusText)
                 })
-        }*/
+        }
 
     }
     

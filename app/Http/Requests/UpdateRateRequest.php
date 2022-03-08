@@ -24,7 +24,8 @@ class UpdateRateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'rate_Point'=>'required|number',
+            'product_id'=>'required|exists:products,id',
         ];
     }
 }

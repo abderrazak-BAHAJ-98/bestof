@@ -42,45 +42,6 @@ data:()=>({
    this.$store.dispatch('categoryModule/getCategorais');
   }
 
-######################################
-let products = [
-    {
-        id: 1,
-        img: "http://127.0.0.1:8000/img/shop_01.jpg",
-        name: "Product 1",
-        price: 343,
-    },
-    {
-        id: 2,
-        img: "http://127.0.0.1:8000/img/shop_02.jpg",
-        name: "Product 2",
-        price: 343,
-    },
-    {
-        id: 3,
-        img: "http://127.0.0.1:8000/img/shop_03.jpg",
-        name: "Product 3",
-        price: 33,
-    },
-    {
-        id: 4,
-        img: "http://127.0.0.1:8000/img/shop_04.jpg",
-        name: "Product 4",
-        price: 43,
-    },
-    {
-        id: 5,
-        img: "http://127.0.0.1:8000/img/shop_05.jpg",
-        name: "Product 5",
-        price: 33,
-    },
-    {
-        id: 6,
-        img: "http://127.0.0.1:8000/img/shop_06.jpg",
-        name: "Product 6",
-        price: 443,
-    },
-];
 #######################################
   Login
 
@@ -132,3 +93,20 @@ let products = [
           
       </div>
   </div>
+
+
+
+
+
+
+
+.items {
+    -webkit-box-shadow: 5px 5px 4px -1px rgba(0, 0, 0, 0.25);
+    box-shadow: 5px 5px 4px -1px rgba(0, 0, 0, 0.08)
+}
+
+
+ .table-shadow {
+    -webkit-box-shadow: 5px 5px 15px -2px rgba(0, 0, 0, 0.42);
+    box-shadow: 5px 5px 15px -2px rgba(0, 0, 0, 0.42)
+}

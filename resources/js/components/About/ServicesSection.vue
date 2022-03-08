@@ -49,5 +49,7 @@ export default {
 </script>
 
 <style>
-
+.services-icon-wap {transition: .3s;}
+.services-icon-wap:hover, .services-icon-wap:hover i {color: #fff;}
+.services-icon-wap:hover {background: #69bb7e;}
 </style>

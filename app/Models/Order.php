@@ -9,5 +9,5 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Order extends Model
 {
     use HasFactory,SoftDeletes;
-    protected $fillable = ['product_id','user_id','card_id','quantity_product','price_sall'];
+    protected $fillable = ['product_id','user_id','card_id','quantity_product','price_sale'];
 }

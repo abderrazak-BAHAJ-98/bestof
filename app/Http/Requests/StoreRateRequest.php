@@ -24,7 +24,8 @@ class StoreRateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'rate_Point'=>'required|integer',
+            'product_id'=>'required|exists:products,id',
         ];
     }
 }

@@ -14,6 +14,7 @@ class RateSeeder extends Seeder
      */
     public function run()
     {
+        //Factory to Generate 20 Rate
         Rate::factory(20)->create();
     }
 }
